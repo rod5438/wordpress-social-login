@@ -489,23 +489,20 @@ function wsl_process_login_get_user_data( $provider, $redirect_to )
 	// check if user already exist in wslusersprofiles
 	$user_id = (int) wsl_get_stored_hybridauth_user_id_by_provider_and_provider_uid( $provider, $hybridauth_user_profile->identifier );
 
-	// if not found in wslusersprofiles, then check his verified email
-	if( ! $user_id && ! empty( $hybridauth_user_email_verified ) )
+	if( ! $user_id && ! empty( $requested_user_login ) )
 	{
-		// check if the verified email exist in wp_users
-		$user_id = (int) wsl_wp_email_exists( $hybridauth_user_email_verified );
+    	// check if the verified email exist in wp_users
+    	//EMMA: 如果找不到他的facebook信箱，那就找一下他的requested_user_login
+    	$user_id = (int) wsl_wp_email_exists( $requested_user_login );
 
-		// check if the verified email exist in wslusersprofiles
-		if( ! $user_id )
-		{
-			$user_id = (int) wsl_get_stored_hybridauth_user_id_by_email_verified( $hybridauth_user_email_verified );
-		}
+    	// the user exists in Wordpress
+    	$wordpress_user_id = $user_id;
 
-		// if the user exists in Wordpress
-		if( $user_id )
-		{
-			$wordpress_user_id = $user_id;
-		}
+    		// check if the verified email exist in wslusersprofiles
+    	if( ! $user_id )
+    	{
+        	$user_id = (int) wsl_get_stored_hybridauth_user_id_by_email_verified( $hybridauth_user_profile->emailVerified );
+    	}
 	}
 
 	/* 4 Deletegate detection of user id to custom filters hooks */
