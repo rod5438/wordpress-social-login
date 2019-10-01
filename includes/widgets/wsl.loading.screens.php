@@ -2,8 +2,8 @@
 /*!
 * WordPress Social Login
 *
-* https://miled.github.io/wordpress-social-login/ | https://github.com/miled/wordpress-social-login
-*   (c) 2011-2018 Mohamed Mrassi and contributors | https://wordpress.org/plugins/wordpress-social-login/
+* http://miled.github.io/wordpress-social-login/ | https://github.com/miled/wordpress-social-login
+*  (c) 2011-2015 Mohamed Mrassi and contributors | http://wordpress.org/plugins/wordpress-social-login/
 */
 
 /**
@@ -27,60 +27,63 @@ if( !defined( 'ABSPATH' ) ) exit;
 */
 if( ! function_exists( 'wsl_render_redirect_to_provider_loading_screen' ) )
 {
-	function wsl_render_redirect_to_provider_loading_screen( $provider_id )
+	function wsl_render_redirect_to_provider_loading_screen( $provider )
 	{
-		$assets_base_url = WORDPRESS_SOCIAL_LOGIN_PLUGIN_URL . 'assets/img/';
-
-        $provider_name = wsl_get_provider_name_by_id( $provider_id );
+		$assets_base_url  = WORDPRESS_SOCIAL_LOGIN_PLUGIN_URL . 'assets/img/';
 ?>
 <!DOCTYPE html>
 	<head>
 		<meta name="robots" content="NOINDEX, NOFOLLOW">
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
 		<title><?php _wsl_e("Redirecting...", 'wordpress-social-login') ?> - <?php bloginfo('name'); ?></title>
 		<style type="text/css">
+			html {
+				background: #f1f1f1;
+			}
 			body {
-				background: #f3f6f8;
-				color: #324155;
-				font-family: -apple-system,BlinkMacSystemFont,"Segoe UI","Roboto","Oxygen-Sans","Ubuntu","Cantarell","Helvetica Neue",sans-serif;
-				font-size: 16px;
-				line-height: 1.6;
+				background: #fff;
+				color: #444;
+				font-family: "Open Sans", sans-serif;
+				margin: 2em auto;
+				padding: 1em 2em;
+				max-width: 700px;
+				-webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.13);
+				box-shadow: 0 1px 3px rgba(0,0,0,0.13);
 			}
-			div {
-				position: absolute;
-				top: 50%;
-				left: 50%;
-				transform: translate(-50%, -50%);
+			#loading-screen {
+				margin-top: 50px;
 			}
-			img {
-				display: block;
-				margin: 0 auto;
-				margin-bottom: 64px;
-			}
-			h1 {
-				font-size: 1.4em;
-				font-family: -apple-system,BlinkMacSystemFont,"Segoe UI","Roboto","Oxygen-Sans","Ubuntu","Cantarell","Helvetica Neue",sans-serif;
-				font-weight: 400;
-				line-height: 1.6em;
-				margin: 1em 0 .5em;
-				transition: all .5s ease;
-                text-align: center;
+			#loading-screen div{
+				line-height: 20px;
+				padding: 8px;
+				background-color: #f2f2f2;
+				border: 1px solid #ccc;
+				padding: 10px;
+				text-align:center;
+				box-shadow: 0 1px 3px rgba(0,0,0,0.13);
+				margin-top:25px;
 			}
 		</style>
 		<script>
-			function onLoad()
+			function init()
 			{
-				setTimeout(function(){ window.location.replace( window.location.href + "&redirect_to_provider=true" ); }, 250);
+				window.location.replace( window.location.href + "&redirect_to_provider=true" );
 			}
 		</script>
 	</head>
-	<body onload="onLoad();">
-		<div>
-			<img src="<?php echo $assets_base_url ?>spinner.gif" />
-
-			<h1><?php echo sprintf( _wsl__( "Contacting <b>%s</b>, please wait...", 'wordpress-social-login'), _wsl__( $provider_name, 'wordpress-social-login') )  ?></h1>
-		</div>
+	<body id="loading-screen" onload="init();">
+		<table width="100%" border="0">
+			<tr>
+				<td align="center"><img src="<?php echo $assets_base_url ?>loading.gif" /></td>
+			</tr>
+			<tr>
+				<td align="center">
+					<div>
+						<?php echo sprintf( _wsl__( "Contacting <b>%s</b>, please wait...", 'wordpress-social-login'), _wsl__( ucfirst( $provider ), 'wordpress-social-login') )  ?>
+					</div>
+				</td>
+			</tr>
+		</table>
 	</body>
 </html>
 <?php
@@ -100,7 +103,7 @@ if( ! function_exists( 'wsl_render_return_from_provider_loading_screen' ) )
 	function wsl_render_return_from_provider_loading_screen( $provider, $authenticated_url, $redirect_to, $wsl_settings_use_popup )
 	{
 		/*
-		* If Authentication display is undefined or eq Popup ($wsl_settings_use_popup==1)
+		* If Authentication displayis undefined or eq Popup ($wsl_settings_use_popup==1)
 		* > create a from with javascript in parent window and submit it to wp-login.php ($authenticated_url)
 		* > with action=wordpress_social_authenticated, then close popup
 		*
@@ -114,42 +117,37 @@ if( ! function_exists( 'wsl_render_return_from_provider_loading_screen' ) )
 	<head>
 		<meta name="robots" content="NOINDEX, NOFOLLOW">
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
 		<title><?php _wsl_e("Redirecting...", 'wordpress-social-login') ?> - <?php bloginfo('name'); ?></title>
 		<style type="text/css">
+			html {
+				background: #f1f1f1;
+			}
 			body {
-				background: #f3f6f8;
-				color: #324155;
-				font-family: -apple-system,BlinkMacSystemFont,"Segoe UI","Roboto","Oxygen-Sans","Ubuntu","Cantarell","Helvetica Neue",sans-serif;
-				font-size: 16px;
-				line-height: 1.6;
+				background: #fff;
+				color: #444;
+				font-family: "Open Sans", sans-serif;
+				margin: 2em auto;
+				padding: 1em 2em;
+				max-width: 700px;
+				-webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.13);
+				box-shadow: 0 1px 3px rgba(0,0,0,0.13);
 			}
-			div {
-				position: absolute;
-				top: 50%;
-				left: 50%;
-				transform: translate(-50%, -50%);
+			#loading-screen {
+				margin-top: 50px;
 			}
-			img {
-				display: block;
-				margin: 0 auto;
-				margin-bottom: 64px;
-			}
-			h1 {
-				font-size: 1.4em;
-				font-family: -apple-system,BlinkMacSystemFont,"Segoe UI","Roboto","Oxygen-Sans","Ubuntu","Cantarell","Helvetica Neue",sans-serif;
-				font-weight: 400;
-				line-height: 1.6em;
-				margin: 1em 0 .5em;
-				transition: all .5s ease;
-                text-align: center;
-			}
-			form {
-				display: none;
+			#loading-screen div{
+				line-height: 20px;
+				padding: 8px;
+				background-color: #f2f2f2;
+				border: 1px solid #ccc;
+				padding: 10px;
+				text-align:center;
+				box-shadow: 0 1px 3px rgba(0,0,0,0.13);
+				margin-top:25px;
 			}
 		</style>
 		<script>
-			function onLoad()
+			function init()
 			{
 				<?php
 					if( $wsl_settings_use_popup == 1 || ! $wsl_settings_use_popup ){
@@ -178,12 +176,19 @@ if( ! function_exists( 'wsl_render_return_from_provider_loading_screen' ) )
 			}
 		</script>
 	</head>
-	<body onload="onLoad();">
-		<div>
-			<img src="<?php echo $assets_base_url ?>spinner.gif" />
-			
-			<h1><?php echo _wsl_e( "Processing, please wait...", 'wordpress-social-login');  ?></h1>
-		</div>
+	<body id="loading-screen" onload="init();">
+		<table width="100%" border="0">
+			<tr>
+				<td align="center"><img src="<?php echo $assets_base_url ?>loading.gif" /></td>
+			</tr>
+			<tr>
+				<td align="center">
+					<div>
+						<?php echo _wsl_e( "Processing, please wait...", 'wordpress-social-login');  ?>
+					</div>
+				</td>
+			</tr>
+		</table>
 
 		<form name="loginform" method="post" action="<?php echo $authenticated_url; ?>">
 			<input type="hidden" id="redirect_to" name="redirect_to" value="<?php echo esc_url( $redirect_to ); ?>">

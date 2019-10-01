@@ -2,20 +2,19 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WordPress Social Login\n"
 "POT-Creation-Date: 2015-08-27 21:07+0200\n"
-"PO-Revision-Date: 2019-05-24 08:33+0000\n"
-"Last-Translator: rod5438 <rod5438@gmail.com>\n"
-"Language-Team: 繁體中文\n"
-"Language: zh_TW\n"
+"PO-Revision-Date: 2019-05-28 11:08+0000\n"
+"Last-Translator: 糰長 <emmakidswow@gmail.com>\n"
+"Language-Team: Chinese (Taiwan)\n"
+"Language: zh-TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Loco https://localise.biz/\n"
+"X-Generator: Loco - https://localise.biz/\n"
 "X-Poedit-KeywordsList: _wsl__;_wsl_e\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-SearchPath-0: .\n"
 "Report-Msgid-Bugs-To: \n"
-"Plural-Forms: nplurals=1; plural=0;\n"
-"X-Loco-Version: 2.2.2; wp-4.9.8"
+"Plural-Forms: nplurals=1; plural=0"
 
 #: admin/components/auth-paly/index.php:59
 #: admin/components/users/wsl.components.users.profiles.php:36
@@ -253,7 +252,7 @@ msgstr ""
 
 #: admin/components/auth-paly/index.php:362
 msgid "Connect with"
-msgstr "社群登入"
+msgstr ""
 
 #: admin/components/bouncer/wsl.components.bouncer.setup.php:47
 #: admin/components/buddypress/wsl.components.buddypress.setup.php:41
@@ -2027,14 +2026,6 @@ msgstr ""
 msgid "View all your website users"
 msgstr ""
 
-#: admin/components/users/wsl.components.users.list.php:46
-#: admin/components/users/wsl.components.users.list.php:67
-#: admin/components/users/wsl.components.users.list.php:78
-#: admin/components/users/wsl.components.users.profiles.php:98
-#: widgets/wsl.users.gateway.php:536 widgets/wsl.users.gateway.php:575
-msgid "Username"
-msgstr ""
-
 #: admin/components/users/wsl.components.users.list.php:51
 msgid ""
 "This screen only list the users who have connected through WordPress Social "
@@ -2214,10 +2205,6 @@ msgstr ""
 
 #: admin/wsl.admin.ui.php:182
 msgid "WordPress Social Login"
-msgstr ""
-
-#: admin/wsl.admin.ui.php:257
-msgid "Oops! We ran into an issue."
 msgstr ""
 
 #: admin/wsl.admin.ui.php:262
@@ -2437,7 +2424,7 @@ msgstr ""
 
 #: settings/wsl.compatibilities.php:48
 msgid "Connect with:"
-msgstr "社群登入:"
+msgstr ""
 
 #: settings/wsl.compatibilities.php:119 settings/wsl.compatibilities.php:129
 #: settings/wsl.compatibilities.php:139
@@ -2535,18 +2522,6 @@ msgid ""
 "href=\"http://miled.github.io/wordpress-social-login\">online user guide</a>."
 msgstr ""
 
-#: widgets/wsl.error.pages.php:144 widgets/wsl.error.pages.php:225
-msgid "Oops! We ran into an issue"
-msgstr ""
-
-#: widgets/wsl.error.pages.php:249
-msgid "Details"
-msgstr ""
-
-#: widgets/wsl.error.pages.php:250
-msgid "Back to home"
-msgstr ""
-
 #: widgets/wsl.error.pages.php:299
 msgid ""
 "<strong>Note:</strong> This debugging area can be disabled from the plugin "
@@ -2564,7 +2539,7 @@ msgstr ""
 
 #: widgets/wsl.loading.screens.php:187
 msgid "Processing, please wait..."
-msgstr "處理中，請稍候..."
+msgstr ""
 
 #: widgets/wsl.users.gateway.php:68
 msgid "Not tonight."
@@ -2605,62 +2580,6 @@ msgstr ""
 msgid "<strong>ERROR</strong>: Sorry, that username already exists!"
 msgstr ""
 
-#: widgets/wsl.users.gateway.php:460
-#, php-format
-msgid "Hi %s"
-msgstr "你好啊 %s"
-
-#: widgets/wsl.users.gateway.php:461
-#, php-format
-msgid ""
-"You're now signed in with your %s account but you are still one step away of "
-"getting into our website"
-msgstr "你已經登入你的 %s 帳號但你還差一步就可以開始使用我們的網站"
-
-#: widgets/wsl.users.gateway.php:470 widgets/wsl.users.gateway.php:528
-msgid "Already have an account"
-msgstr "已經有帳號"
-
-#: widgets/wsl.users.gateway.php:471
-#, php-format
-msgid "Link your existing account on our website to your %s ID."
-msgstr "連結既有帳號到你的 %s ID."
-
-#: widgets/wsl.users.gateway.php:476 widgets/wsl.users.gateway.php:565
-msgid "New to our website"
-msgstr "你是新使用者"
-
-#: widgets/wsl.users.gateway.php:477
-#, php-format
-msgid "Create a new account and it will be associated with your %s ID."
-msgstr "用 %s ID 創建新帳號."
-
-#: widgets/wsl.users.gateway.php:484
-msgid "Link my account"
-msgstr "連結既有帳號"
-
-#: widgets/wsl.users.gateway.php:490 widgets/wsl.users.gateway.php:492
-msgid "Create a new account"
-msgstr "創新帳號"
-
-#: widgets/wsl.users.gateway.php:530
-msgid ""
-"Please enter your username and password of your existing account on our "
-"website. Once verified, it will linked to your % ID"
-msgstr ""
-
-#: widgets/wsl.users.gateway.php:542
-msgid "Password"
-msgstr ""
-
-#: widgets/wsl.users.gateway.php:547 widgets/wsl.users.gateway.php:603
-msgid "Continue"
-msgstr ""
-
-#: widgets/wsl.users.gateway.php:549 widgets/wsl.users.gateway.php:606
-msgid "Back"
-msgstr ""
-
 #: widgets/wsl.users.gateway.php:568
 #, php-format
 msgid ""
@@ -2671,4 +2590,84 @@ msgstr ""
 #: widgets/wsl.users.gateway.php:620
 #, php-format
 msgid "Back to %s"
-msgstr "回到 %s"
+msgstr ""
+
+#: admin/components/users/wsl.components.users.list.php:46
+#: admin/components/users/wsl.components.users.list.php:67
+#: admin/components/users/wsl.components.users.list.php:78
+#: admin/components/users/wsl.components.users.profiles.php:98
+#: widgets/wsl.users.gateway.php:536 widgets/wsl.users.gateway.php:575
+msgid "Username"
+msgstr "原有小小職人實境體驗網站註冊信箱"
+
+#: admin/wsl.admin.ui.php:257
+msgid "Oops! We ran into an issue."
+msgstr "遇到某些錯誤狀況"
+
+#: widgets/wsl.error.pages.php:144 widgets/wsl.error.pages.php:225
+msgid "Oops! We ran into an issue"
+msgstr "遇到某些錯誤狀況"
+
+#: widgets/wsl.error.pages.php:249
+msgid "Details"
+msgstr "更多細節"
+
+#: widgets/wsl.error.pages.php:250
+msgid "Back to home"
+msgstr "返回首頁"
+
+#: widgets/wsl.users.gateway.php:460
+#, php-format
+msgid "Hi %s"
+msgstr "哈囉 %s"
+
+#: widgets/wsl.users.gateway.php:461
+#, php-format
+msgid ""
+"You're now signed in with your %s account but you are still one step away of "
+"getting into our website"
+msgstr "完成以下%s帳號快速通關設定，以後報名就不用再記密碼了喔~"
+
+#: widgets/wsl.users.gateway.php:470 widgets/wsl.users.gateway.php:528
+msgid "Already have an account"
+msgstr "您已經擁有小小職人實境體驗會員帳號"
+
+#: widgets/wsl.users.gateway.php:471
+#, php-format
+msgid "Link your existing account on our website to your %s ID."
+msgstr "連結%s與您現在的會員帳號"
+
+#: widgets/wsl.users.gateway.php:476 widgets/wsl.users.gateway.php:565
+msgid "New to our website"
+msgstr "您是新加入會員"
+
+#: widgets/wsl.users.gateway.php:477
+#, php-format
+msgid "Create a new account and it will be associated with your %s ID."
+msgstr "用%s身分申請新帳號"
+
+#: widgets/wsl.users.gateway.php:484
+msgid "Link my account"
+msgstr "連結帳號"
+
+#: widgets/wsl.users.gateway.php:490 widgets/wsl.users.gateway.php:492
+msgid "Create a new account"
+msgstr "申請帳號"
+
+#: widgets/wsl.users.gateway.php:530
+msgid ""
+"Please enter your username and password of your existing account on our "
+"website. Once verified, it will linked to your % ID"
+msgstr "輸入原有小小職人實境體驗帳號的信箱/密碼，來完成和%s的帳號連結"
+
+#: widgets/wsl.users.gateway.php:542
+msgid "Password"
+msgstr "原有小小職人實境體驗網站註冊密碼"
+
+#: widgets/wsl.users.gateway.php:547 widgets/wsl.users.gateway.php:603
+msgid "Continue"
+msgstr "繼續"
+
+#: widgets/wsl.users.gateway.php:549 widgets/wsl.users.gateway.php:606
+msgid "Back"
+msgstr "返回上一個步驟"

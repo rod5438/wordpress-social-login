@@ -2,40 +2,44 @@
 /*!
 * WordPress Social Login
 *
-* https://miled.github.io/wordpress-social-login/ | https://github.com/miled/wordpress-social-login
-*   (c) 2011-2019 Mohamed Mrassi and contributors | https://wordpress.org/plugins/wordpress-social-login/
+* http://hybridauth.sourceforge.net/wsl/index.html | http://github.com/hybridauth/WordPress-Social-Login
+*    (c) 2011-2014 Mohamed Mrassi and contributors | http://wordpress.org/extend/plugins/wordpress-social-login/
 */
 
 // ------------------------------------------------------------------------
-//	Handle LEGACY WSL End Points (of v2)
-// ------------------------------------------------------------------------
-//  Note: The way we handle errors is a bit messy and should be reworked
+//	WSL End Point
 // ------------------------------------------------------------------------
 
-session_start()
-    or die("WSL couldn't start new php session.");
+/**
+* If for whatever reason you want to debug apis call made by hybridauth during the auth process, you can add the block of code below.
+*
+* <code>
+*    include_once( '/path/to/file/wp-load.php' );
+*    define( 'WORDPRESS_SOCIAL_LOGIN_DEBUG_API_CALLS', true );
+*    add_action( 'wsl_log_provider_api_call', 'wsl_watchdog_wsl_log_provider_api_call', 10, 8 );
+*    do_action( 'wsl_log_provider_api_call', 'ENDPOINT', 'Hybridauth://endpoint', null, null, null, null, $_SERVER["QUERY_STRING"] );
+* </code>
+*/
 
-if( ! file_exists( __DIR__ . '/library/src/autoload.php' ) ){
-    die("WSL couldn't find required files.");
+//- Re-parse the QUERY_STRING for custom endpoints.
+if( defined( 'WORDPRESS_SOCIAL_LOGIN_CUSTOM_ENDPOINT' ) && ! isset( $_REQUEST['hauth_start'] ) ) 
+{
+	$_SERVER["QUERY_STRING"] = 'hauth_done=' . WORDPRESS_SOCIAL_LOGIN_CUSTOM_ENDPOINT . '&' . str_ireplace( '?', '&', $_SERVER["QUERY_STRING"] );
+
+	parse_str( $_SERVER["QUERY_STRING"], $_REQUEST );
 }
 
-require_once __DIR__ . '/library/src/autoload.php';
+//- Hybridauth required includes
+require_once( "Hybrid/Storage.php"   );
+require_once( "Hybrid/Error.php"     );
+require_once( "Hybrid/Auth.php"      );
+require_once( "Hybrid/Exception.php" );
+require_once( "Hybrid/Endpoint.php"  );
 
-if (count($_GET)) {
-	$url = Hybridauth\HttpClient\Util::getCurrentUrl(false);
 
-	$url = str_ireplace( '/hybridauth/index.php', '/hybridauth/callbacks/', $url );
+//- Custom WSL endpoint class
+require_once( "endpoints/WSL_Endpoint.php" );
 
-	$url .= strtolower( $_GET['hauth_done'] ) .  '.php?';
 
-	unset( $_GET['hauth_done'] );
-
-	foreach ($_GET as $key => $value) {
-		$url .= $key . '=' . urlencode( $value ) . '&';
-	}
-
-	Hybridauth\HttpClient\Util::redirect($url);
-}
-
-header("HTTP/1.0 403 Forbidden");
-die;
+//- Entry point to the End point 
+WSL_Hybrid_Endpoint::process();
